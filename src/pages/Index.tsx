@@ -16,47 +16,121 @@ const HomePage = () => {
   return (
     <main>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 gradient-primary opacity-90" />
-        <img src={heroImg} alt="Medical team" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
-        <div className="relative container-custom section-padding text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary-foreground/20 text-primary-foreground text-xs font-semibold tracking-wider uppercase mb-6 backdrop-blur-sm">
-              Trusted by 50,000+ Patients
-            </span>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-foreground max-w-3xl mx-auto leading-tight">
-              Your Health, Our Priority
-            </h1>
-            <p className="mt-5 text-primary-foreground/80 text-lg max-w-xl mx-auto">
+      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+        {/* Background Image with Effects */}
+        <div className="absolute inset-0">
+          <img 
+            src={heroImg} 
+            alt="Medical team" 
+            width={1920} 
+            height={1080} 
+            className="absolute inset-0 w-full h-full object-cover scale-110 blur-sm transform transition-transform duration-1000" 
+          />
+          {/* Premium Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/50" />
+        </div>
+        
+        {/* Content Container */}
+        <div className="relative container-custom section-padding text-center z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-4xl mx-auto"
+          >
+            {/* Premium Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="inline-block mb-8"
+            >
+              <span className="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl">
+                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse" />
+                <span className="text-white/90 text-sm font-semibold tracking-wide uppercase">
+                  Trusted by 50,000+ Patients
+                </span>
+              </span>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.h1 
+              className="font-display text-5xl sm:text-6xl lg:text-7xl font-black text-white/95 max-w-4xl mx-auto leading-tight mb-6"
+              style={{ textShadow: '0 4px 24px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3)' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
+              Your Health,<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-cyan-200">
+                Our Priority
+              </span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p 
+              className="text-white/80 text-xl max-w-2xl mx-auto leading-relaxed font-light"
+              style={{ textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
               World-class medical care with compassion. Experience the difference with our expert doctors and modern facilities.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center mt-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
               <Link to="/appointment">
-                <Button size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-semibold px-8">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold px-10 py-4 rounded-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 border-0"
+                >
                   Book Appointment
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-2 border-white/60 text-white font-bold px-10 py-4 rounded-xl bg-white/10 backdrop-blur-md hover:bg-white/20 hover:border-white hover:text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                >
                   Contact Us
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-14 max-w-3xl mx-auto">
+
+          {/* Trust Indicators */}
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-20 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
             {[
               { icon: Shield, label: "Expert Doctors", sub: "Board Certified" },
               { icon: Clock, label: "24/7 Emergency", sub: "Always Available" },
               { icon: Award, label: "30+ Years", sub: "Of Excellence" },
             ].map(({ icon: Icon, label, sub }, i) => (
-              <motion.div key={label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 + i * 0.15 }}
-                className="bg-primary-foreground/10 backdrop-blur-sm rounded-xl p-4 text-primary-foreground">
-                <Icon className="w-6 h-6 mx-auto mb-2" />
-                <p className="font-semibold text-sm">{label}</p>
-                <p className="text-xs opacity-70">{sub}</p>
+              <motion.div 
+                key={label} 
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ delay: 0.7 + i * 0.1 }}
+                className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 text-white/90 border border-white/10 shadow-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+              >
+                <Icon className="w-8 h-8 mx-auto mb-3 text-cyan-300" />
+                <p className="font-bold text-lg mb-1">{label}</p>
+                <p className="text-white/70 text-sm font-medium">{sub}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
